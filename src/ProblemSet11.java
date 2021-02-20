@@ -5,21 +5,22 @@ public class ProblemSet11 {
     public static void main(String[] args) {
        // int[] numbers = {1, 2, 3, 4, 5, 5};
         //int end = 16;
-        ArrayList<Integer> numbers = new ArrayList<Integer>();
-        //1, 4, 1, 5, 5, 4, 1 }) → { 1, 4, 5, 1, 1, 4, 5 }
-        numbers.add(1);
-        numbers.add(4);
-        numbers.add(1);
-        numbers.add(5);
-        numbers.add(5);
-        numbers.add(4);
-        numbers.add(1);
+        ArrayList<Integer> outer = new ArrayList<Integer>();
+        outer.add(1);
+        outer.add(2);
+        outer.add(4);
+        outer.add(4);
+        outer.add(6);
 
-        System.out.println(fix45(numbers));
+        ArrayList<Integer> inner = new ArrayList<Integer>();
+        inner.add(2);
+        inner.add(4);
+
+        System.out.println(linearIn(outer,inner));
         //(Arrays.toString(
     }
 
-    public static ArrayList<String> fizzBuzz(int start, int end) {
+    public static ArrayList<String> linearIn(int start, int end) {
         if (start >= end){
             return null;
         }
@@ -178,17 +179,59 @@ public class ProblemSet11 {
     }
 
     public static boolean canBalance(ArrayList<Integer> numbers) {
+        if (numbers == null || numbers.size() == 0) {
+            return false;
+        }
 
+        int[] front = new int[numbers.size()];
+        boolean equal = false;
+        int numberSum = 0;
+        int frontSum = 0;
+
+        for(int i = 0; i < numbers.size(); i++){
+            frontSum=0;
+            numberSum = 0;
+            front[i] = numbers.get(i);
+            numbers.set(i, 0);
+
+            for (int j = 0; j < numbers.size(); j++) {
+                numberSum += numbers.get(j);
+            }
+            for (int k = 0; k < front.length; k++) {
+                frontSum += front[k];
+            }
+            if (frontSum == numberSum) {
+                equal = true;
+                break;
+            }
+        }
+        return equal;
     }
-/*
-    public static boolean linearIn(ArrayList<Integer> outer, ArrayList<Integer> inner) {
 
+    public static boolean linearIn(ArrayList<Integer> outer, ArrayList<Integer> inner) {
+        if(outer == null || outer == null || outer.size() == 0 || inner.size() == 0){
+            return false;
+        }
+        boolean check = true;
+        for(int i = 1; i< outer.size(); i++){
+            if (outer.get(i) < outer.get(i-1)){
+                check = false; } }
+        for(int i = 1; i < inner.size(); i++){
+            if (inner.get(i) < inner.get(i-1)){
+                check = false; } }
+
+        for(int j = 0; j < inner.size(); j++){
+            if(outer.contains(inner.get(j)) == false){
+                check = false;
+                break; }
+        }
+        return check;
     }
 
     public static ArrayList<Integer> squareUp(int n) {
 
     }
-
+/*
     public static ArrayList<Integer> seriesUp(int n) {
 
     }
