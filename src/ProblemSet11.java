@@ -3,21 +3,22 @@ import java.util.ArrayList;
 public class ProblemSet11 {
 
     public static void main(String[] args) {
-        int n = 6;
+      //  int n = 6;
         //int end = 16;
         ArrayList<Integer> numbers = new ArrayList<Integer>();
+
         numbers.add(1);
-        numbers.add(1);
+       numbers.add(2);
+        numbers.add(7);
         numbers.add(2);
-        numbers.add(1);
-        numbers.add(1);
-        numbers.add(1);
+       numbers.add(1);
+        numbers.add(7);
 /*
         ArrayList<Integer> inner = new ArrayList<Integer>();
         inner.add(2);
         inner.add(4);
 */
-        System.out.println(countClumps(numbers));
+        System.out.println(maxMirror(numbers));
         //(Arrays.toString(
     }
 
@@ -260,11 +261,89 @@ public class ProblemSet11 {
                 series.add(j);}}
         return series;
     }
-/*
-    public static int maxMirror(ArrayList<Integer> numbers) {
+
+    public static int maxMirror(ArrayList<Integer> numbers) { //turn back to int
+    if (numbers == null){
+        return -1;
+    }
+    ArrayList<Integer> forward = new ArrayList<Integer>();
+    ArrayList<Integer> backward = new ArrayList<Integer>();
+    ArrayList<Integer> duplicate = new ArrayList<Integer>();
+    for(int i = 0; i < numbers.size(); i++){
+        duplicate.add(numbers.get(i));
+    }
+
+    int currentTest;
+    for(int j =0; j<duplicate.size(); j++){
+        currentTest = duplicate.get(j);
+        for(int k = j+1; k<duplicate.size(); k++){
+            if(duplicate.get(k) == currentTest){
+                forward.add(currentTest); } } }
+
+    int backTest;
+    for(int j = duplicate.size()-1; j>=0; j--){
+         backTest = duplicate.get(j);
+         for(int k = j-1; k>=0; k--){
+            if(duplicate.get(k) == backTest){
+                backward.add(backTest); } } }
+
+    int count =0;
+    for(int x =0; x < backward.size(); x++){
+        if(backward.get(x) == forward.get(x)){
+            count++;
+        }
+    }
+        ArrayList<Integer> newForward = new ArrayList<Integer>();
+        for(int i = 0; i < forward.size(); i++){
+            newForward.add(forward.get(i));
+        }
+
+        if(count == 1){
+            for(int p = 0; p <numbers.size(); p++){
+                if(numbers.get(p) == numbers.get(p+2)){
+                    return 3;
+                }}}
+
+    if(count == 0){
+        forward.remove(0);
+        for(int x =0; x < forward.size(); x++){
+            if(backward.get(x) == forward.get(x)){
+                count++;
+            }
+        }
+    }
+        if(count == 0){
+            backward.remove(0);
+            for(int x =0; x < backward.size(); x++){
+                if(backward.get(x) == newForward.get(x)){
+                    count++;
+                }
+            }
+        }
+    return count;
+  //  return duplicate;
+
+    /*Plan:
+    *HOW WOULD I DO IT?
+    * Make arraylist for doubles
+    * First identify which numbers appear twice:
+    * make duplicate array of numbers
+    * For loop: if number appears twice, add number to doubles list, remove both from the duplicate array
+    *
+    *
+    * Go through numbers,
+    *
+    *
+    * Put each of the repeat numbers in an array in the original order
+    * Find the second occurence of each of these numbers and put them in an array
+    * Reverse the order of this array
+    *Identify longest span for which these match (still need to figure this part out)
+    *
+    * Next need to determine how to deal with palindromes
+    * */
 
     }
-*/
+
     public static int countClumps(ArrayList<Integer> numbers) {
         if(numbers == null){return -1;}
         int clumpCount = 0;
