@@ -3,20 +3,21 @@ import java.util.ArrayList;
 public class ProblemSet11 {
 
     public static void main(String[] args) {
-       // int[] numbers = {1, 2, 3, 4, 5, 5};
+        int n = 6;
         //int end = 16;
-        ArrayList<Integer> outer = new ArrayList<Integer>();
-        outer.add(1);
-        outer.add(2);
-        outer.add(4);
-        outer.add(4);
-        outer.add(6);
-
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        numbers.add(1);
+        numbers.add(1);
+        numbers.add(2);
+        numbers.add(1);
+        numbers.add(1);
+        numbers.add(1);
+/*
         ArrayList<Integer> inner = new ArrayList<Integer>();
         inner.add(2);
         inner.add(4);
-
-        System.out.println(linearIn(outer,inner));
+*/
+        System.out.println(countClumps(numbers));
         //(Arrays.toString(
     }
 
@@ -229,18 +230,53 @@ public class ProblemSet11 {
     }
 
     public static ArrayList<Integer> squareUp(int n) {
+        if (n < 0) {
+            return null;
+        }
+        ArrayList<Integer> squareList = new ArrayList<>();
 
+        for (int i = 0; i < n; i++) {
+            int[] section = new int[n];
+            int addOn = 0;
+            for (int j = n - 1; j >= 0; j--) {
+                if (addOn < i + 1) {
+                    section[j] = addOn + 1;
+                    addOn++;
+                }
+            }
+            for (int k : section) {
+                squareList.add(k); }
+        }
+        return squareList;
+    }
+
+    public static ArrayList<Integer> seriesUp(int n) {
+        if(n<0){
+            return null; }
+
+        ArrayList<Integer> series = new ArrayList<>();
+        for(int i = 0; i < n; i ++){
+            for(int j = 1; j < i + 2; j ++){
+                series.add(j);}}
+        return series;
     }
 /*
-    public static ArrayList<Integer> seriesUp(int n) {
-
-    }
-
     public static int maxMirror(ArrayList<Integer> numbers) {
 
     }
-
+*/
     public static int countClumps(ArrayList<Integer> numbers) {
-
-    }*/
+        if(numbers == null){return -1;}
+        int clumpCount = 0;
+        int currentI = 0;
+        for(int i = 1; i < numbers.size(); i++){
+            if(numbers.get(i) == numbers.get(i-1)){
+                clumpCount ++;
+            } }
+        for (int j = 2; j < numbers.size(); j++)
+            if(numbers.get(j) == numbers.get(j-2) && numbers.get(j) == numbers.get(j-1)){
+                clumpCount--;
+            }
+        return clumpCount;
+    }
 }
