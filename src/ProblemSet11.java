@@ -3,26 +3,10 @@ import java.util.ArrayList;
 public class ProblemSet11 {
 
     public static void main(String[] args) {
-      //  int n = 6;
-        //int end = 16;
-        ArrayList<Integer> numbers = new ArrayList<Integer>();
 
-        numbers.add(1);
-       numbers.add(2);
-        numbers.add(7);
-        numbers.add(2);
-       numbers.add(1);
-        numbers.add(7);
-/*
-        ArrayList<Integer> inner = new ArrayList<Integer>();
-        inner.add(2);
-        inner.add(4);
-*/
-        System.out.println(maxMirror(numbers));
-        //(Arrays.toString(
     }
 
-    public static ArrayList<String> linearIn(int start, int end) {
+    public ArrayList<String> fizzBuzz(int start, int end) {
         if (start >= end){
             return null;
         }
@@ -45,7 +29,7 @@ public class ProblemSet11 {
         return finalArray;
     }
 
-    public static int maxSpan(ArrayList<Integer> numbers) {
+    public int maxSpan(ArrayList<Integer> numbers) {
         int span;
         int max = 0;
         if(numbers == null){
@@ -71,7 +55,7 @@ public class ProblemSet11 {
         return span;
     }
 
-    public static ArrayList<Integer> fix34(ArrayList<Integer> numbers) {
+    public ArrayList<Integer> fix34(ArrayList<Integer> numbers) {
         //////////////////////////////////////////////
         if(numbers == null){
             return null;
@@ -131,14 +115,13 @@ public class ProblemSet11 {
         return arr;
     }
 
-    public static ArrayList<Integer> fix45(ArrayList<Integer> numbers) {
+    public ArrayList<Integer> fix45(ArrayList<Integer> numbers) {
     if(numbers == null){
             return null;
         }
         ArrayList<Integer> others = new ArrayList<Integer>();
         int fiveCount = 0;
         int fourCount = 0;
-        //int otherCount = 0;
 
         for(int i = 0; i < numbers.size(); i++){
             if(numbers.get(i) == 4){
@@ -162,7 +145,6 @@ public class ProblemSet11 {
         if(numbers == null || fiveCount != fourCount || consecutive == true || end == true){
             return null; }
         //////////////////////////////////////////////
-        //////////////////////////////////////////////////
        ArrayList<Integer> arr = new ArrayList<Integer>();
         while(arr.size() < numbers.size()) arr.add(null);
 
@@ -180,7 +162,7 @@ public class ProblemSet11 {
 
     }
 
-    public static boolean canBalance(ArrayList<Integer> numbers) {
+    public boolean canBalance(ArrayList<Integer> numbers) {
         if (numbers == null || numbers.size() == 0) {
             return false;
         }
@@ -210,7 +192,7 @@ public class ProblemSet11 {
         return equal;
     }
 
-    public static boolean linearIn(ArrayList<Integer> outer, ArrayList<Integer> inner) {
+    public boolean linearIn(ArrayList<Integer> outer, ArrayList<Integer> inner) {
         if(outer == null || outer == null || outer.size() == 0 || inner.size() == 0){
             return false;
         }
@@ -230,7 +212,7 @@ public class ProblemSet11 {
         return check;
     }
 
-    public static ArrayList<Integer> squareUp(int n) {
+    public ArrayList<Integer> squareUp(int n) {
         if (n < 0) {
             return null;
         }
@@ -251,7 +233,7 @@ public class ProblemSet11 {
         return squareList;
     }
 
-    public static ArrayList<Integer> seriesUp(int n) {
+    public ArrayList<Integer> seriesUp(int n) {
         if(n<0){
             return null; }
 
@@ -262,7 +244,7 @@ public class ProblemSet11 {
         return series;
     }
 
-    public static int maxMirror(ArrayList<Integer> numbers) { //turn back to int
+    public int maxMirror(ArrayList<Integer> numbers) {
     if (numbers == null){
         return -1;
     }
@@ -321,30 +303,9 @@ public class ProblemSet11 {
             }
         }
     return count;
-  //  return duplicate;
-
-    /*Plan:
-    *HOW WOULD I DO IT?
-    * Make arraylist for doubles
-    * First identify which numbers appear twice:
-    * make duplicate array of numbers
-    * For loop: if number appears twice, add number to doubles list, remove both from the duplicate array
-    *
-    *
-    * Go through numbers,
-    *
-    *
-    * Put each of the repeat numbers in an array in the original order
-    * Find the second occurence of each of these numbers and put them in an array
-    * Reverse the order of this array
-    *Identify longest span for which these match (still need to figure this part out)
-    *
-    * Next need to determine how to deal with palindromes
-    * */
-
     }
 
-    public static int countClumps(ArrayList<Integer> numbers) {
+    public int countClumps(ArrayList<Integer> numbers) {
         if(numbers == null){return -1;}
         int clumpCount = 0;
         int currentI = 0;
